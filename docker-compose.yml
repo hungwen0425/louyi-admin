@@ -1,0 +1,8 @@
+version: '1'
+services:
+  louyi-admin:
+    image: louyi/admin:1.0.0
+    ports:
+      - "8888:8888"
+    environment:
+      - spring.profiles.active=dev

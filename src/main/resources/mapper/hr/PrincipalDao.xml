@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.louyi.system.hr.dao.PrincipalDao">
+
+    <!-- 可根據自己的需求，是否要使用 -->
+    <resultMap type="com.louyi.system.hr.entity.PrincipalEntity" id="principalMap">
+                    <result property="id" column="id"/>
+                    <result property="employId" column="employ_id"/>
+                    <result property="name" column="name"/>
+                    <result property="dateOfEmployment" column="date_of_employment"/>
+                    <result property="resignationDate" column="resignation_date"/>
+                    <result property="jobTitle" column="job_title"/>
+                    <result property="idNumber" column="id_number"/>
+                    <result property="birth" column="birth"/>
+                    <result property="bloodType" column="blood_type"/>
+                    <result property="mobileNumber" column="mobile_number"/>
+                    <result property="contactNumber" column="contact_number"/>
+                    <result property="emergencyContact" column="emergency_contact"/>
+                    <result property="emergencyContactPhone" column="emergency_contact_phone"/>
+                    <result property="address" column="address"/>
+                    <result property="education" column="education"/>
+                    <result property="graduateSchoolDepartment" column="graduate_school_department"/>
+                    <result property="probation" column="probation"/>
+                    <result property="seniority" column="seniority"/>
+                    <result property="age" column="age"/>
+                    <result property="email" column="email"/>
+            </resultMap>
+
+
+</mapper>

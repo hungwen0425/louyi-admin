@@ -1,0 +1,78 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8888
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /louyi-admin
+
+spring:
+  # 環境 dev|test|prod
+  profiles:
+    active: dev
+  # jackson 時間格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  redis:
+    open: false  # 是否開啟 redis 緩存  true開啟   false關閉
+    database: 0
+    host: localhost
+    port: 6379
+    password:    # 密碼（默認為空）
+    timeout: 6000ms  # 連接超時時長（毫秒）
+    jedis:
+      pool:
+        max-active: 1000  # 連接池最大連接數（使用負值表示沒有限制）
+        max-wait: -1ms    # 連接池最大阻塞等待時間（使用負值表示沒有限制）
+        max-idle: 10      # 連接池中的最大空閑連接
+        min-idle: 5       # 連接池中的最小空閑連接
+  mvc:
+    throw-exception-if-no-handler-found: true
+#  resources:
+#    add-mappings: false
+
+# mybatis
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  # 實體掃描，多個 package 用逗號或者分號分隔
+  typeAliasesPackage: com.louyi.modules.*.entity,com.louyi.*.*.entity
+  global-config:
+    # 數據庫相關配置
+    db-config:
+      # 主鍵類型  AUTO:"資料庫ID自增", INPUT:"用戶輸入ID", ID_WORKER:"全局唯一ID (數字類型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+    banner: false
+  # 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+
+louyi:
+  redis:
+    open: false
+  shiro:
+    redis: false
+  # APP 模塊，是通過 jwt 認證的，如果要使用 APP 模塊，則需要修改【加密秘鑰】
+  jwt:
+    # 加密秘鑰
+    secret: f4e2e52034348f86b67cde581c0f9eb5[www.louyi.io]
+    # token 有效時長，7 天，單位秒
+    expire: 604800
+    header: token
+
+logging:
+  level:
+    com.louyi.system.hr: info
